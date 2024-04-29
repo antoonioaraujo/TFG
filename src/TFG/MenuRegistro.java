@@ -85,7 +85,7 @@ public class MenuRegistro extends JFrame {
 		ContraseñaF.setColumns(10);
 		
 		JButton ConfirmarB = new JButton("Confirmar");
-		ConfirmarB.setIcon(new ImageIcon(MenuRegistro.class.getResource("/Imagenes/Logo.jpg")));
+		ConfirmarB.setIcon(null);
 		ConfirmarB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
