@@ -1,19 +1,8 @@
 package TFG;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.*;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
-import javax.swing.JScrollBar;
-import java.awt.Choice;
-import java.awt.Font;
-import javax.swing.JSpinner;
-import javax.swing.SwingConstants;
 
 public class Peliculas extends JFrame {
 
@@ -39,44 +28,80 @@ public class Peliculas extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Peliculas() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(950, 600);
-		setLocationRelativeTo(null);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(31, 150, 251, 252);
-		contentPane.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setBounds(343, 150, 251, 252);
-		contentPane.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setBounds(655, 150, 251, 252);
-		contentPane.add(lblNewLabel_2);
-		
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(917, 0, 17, 561);
-		contentPane.add(scrollBar);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setEditable(true);
-		comboBox.setBounds(10, 42, 133, 20);
-		contentPane.add(comboBox);
-		
-		JLabel lblNewLabel_3 = new JLabel("Filtros");
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setBounds(44, 14, 57, 20);
-		contentPane.add(lblNewLabel_3);
+    public Peliculas() {
+		setResizable(false);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(950, 600);
+        setLocationRelativeTo(null);
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
 		
 		JLabel lblNewLabel_4 = new JLabel("New label");
 		lblNewLabel_4.setBounds(754, 14, 152, 64);
 		contentPane.add(lblNewLabel_4);
+        // Creamos un JPanel que representará el contenido principal
+        JPanel mainContentPanel = new JPanel();
+        mainContentPanel.setLayout(new GridLayout(3, 3, 15, 15));
+        mainContentPanel.setBounds(50, 50, 800, 400);// Establecemos un tamaño preferido para el JPanel
+
+        // Creamos un JScrollPane y le agregamos el JPanel principal como contenido
+        JScrollPane scrollPane = new JScrollPane(mainContentPanel);
+        
+        JButton btnNewButton = new JButton("New button");
+        btnNewButton.setBounds(25, 180, 251, 252);
+        mainContentPanel.add(btnNewButton);
+        
+        JButton btnNewButton_1 = new JButton("New button");
+        btnNewButton_1.setBounds(325, 180, 251, 252);
+        mainContentPanel.add(btnNewButton_1);
+        
+        JButton btnNewButton_2 = new JButton("New button");
+        btnNewButton_2.setBounds(625, 180, 251, 252);
+        mainContentPanel.add(btnNewButton_2);
+        
+        JComboBox comboBox = new JComboBox();
+        comboBox.setBounds(25, 36, 133, 20);
+        contentPane.add(comboBox);
+        
+        JLabel lblNewLabel_3 = new JLabel("Filtros");
+        lblNewLabel_3.setBounds(60, 11, 57, 20);
+        contentPane.add(lblNewLabel_3);
+        lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        JButton btnNewButton_3 = new JButton("New button");
+        btnNewButton_3.setBounds(25, 480, 251, 252);
+        mainContentPanel.add(btnNewButton_3);
+        
+        JButton btnNewButton_4 = new JButton("New button");
+        btnNewButton_4.setBounds(325, 480, 251, 252);
+        mainContentPanel.add(btnNewButton_4);
+        
+        JButton btnNewButton_5 = new JButton("New button");
+        btnNewButton_5.setBounds(625, 480, 251, 252);
+        mainContentPanel.add(btnNewButton_5);
+        
+        JButton btnNewButton_6 = new JButton("New button");
+        btnNewButton_6.setBounds(25, 780, 251, 252);
+        mainContentPanel.add(btnNewButton_6);
+        
+        JButton btnNewButton_7 = new JButton("New button");
+        btnNewButton_7.setBounds(325, 780, 251, 252);
+        mainContentPanel.add(btnNewButton_7);
+        
+        JButton btnNewButton_8 = new JButton("New button");
+        btnNewButton_8.setBounds(625, 780, 251, 252);
+        mainContentPanel.add(btnNewButton_8);
+        
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setBounds(0, 5, 950, 600); // Establecemos el tamaño y posición del JScrollPane
+
+        // Agregamos el JScrollPane al contentPane sin reemplazar componentes existentes
+        getContentPane().setLayout(new BorderLayout());
+        getContentPane().add(scrollPane, BorderLayout.CENTER);
+        getContentPane().revalidate();
+        mainContentPanel.setPreferredSize(new Dimension(950, 1100));
+        contentPane.add(scrollPane);
 	}
 }
