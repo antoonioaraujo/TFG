@@ -10,6 +10,9 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
 public class MenuRegistro extends JFrame {
 
@@ -39,6 +42,7 @@ public class MenuRegistro extends JFrame {
 	 * Create the frame.
 	 */
 	public MenuRegistro() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MenuRegistro.class.getResource("/Imagenes/Logo.jpg")));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setSize(950, 600);
 		setLocationRelativeTo(null);
@@ -49,42 +53,44 @@ public class MenuRegistro extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel RegistrateT = new JLabel("Registrate");
-		RegistrateT.setBounds(441, 98, 69, 35);
+		RegistrateT.setFont(new Font("Tahoma", Font.PLAIN, 27));
+		RegistrateT.setBounds(408, 87, 134, 35);
 		contentPane.add(RegistrateT);
 		
 		JLabel UsuarioT = new JLabel("Usuario");
-		UsuarioT.setBounds(327, 168, 45, 13);
+		UsuarioT.setBounds(350, 170, 45, 13);
 		contentPane.add(UsuarioT);
 		
 		UsuarioF = new JTextField();
-		UsuarioF.setBounds(471, 165, 96, 19);
+		UsuarioF.setBounds(460, 170, 96, 19);
 		contentPane.add(UsuarioF);
 		UsuarioF.setColumns(10);
 		
 		JLabel CorreoT = new JLabel("Correo");
-		CorreoT.setBounds(327, 225, 45, 13);
+		CorreoT.setBounds(350, 220, 45, 13);
 		contentPane.add(CorreoT);
 		
 		CorreoF = new JTextField();
-		CorreoF.setBounds(471, 222, 96, 19);
+		CorreoF.setBounds(460, 220, 96, 19);
 		contentPane.add(CorreoF);
 		CorreoF.setColumns(10);
 		
 		JLabel ContraseñaT = new JLabel("Contraseña");
-		ContraseñaT.setBounds(327, 290, 69, 13);
+		ContraseñaT.setBounds(350, 270, 69, 13);
 		contentPane.add(ContraseñaT);
 		
 		ContraseñaF = new JTextField();
-		ContraseñaF.setBounds(471, 287, 96, 19);
+		ContraseñaF.setBounds(460, 270, 96, 19);
 		contentPane.add(ContraseñaF);
 		ContraseñaF.setColumns(10);
 		
 		JButton ConfirmarB = new JButton("Confirmar");
+		ConfirmarB.setIcon(null);
 		ConfirmarB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		ConfirmarB.setBounds(482, 376, 85, 21);
+		ConfirmarB.setBounds(482, 370, 100, 27);
 		contentPane.add(ConfirmarB);
 		
 		JButton AtrasB = new JButton("Atras");
@@ -95,7 +101,7 @@ public class MenuRegistro extends JFrame {
 				dispose();
 			}
 		});
-		AtrasB.setBounds(327, 376, 85, 21);
+		AtrasB.setBounds(327, 370, 100, 27);
 		contentPane.add(AtrasB);
 	}
 
