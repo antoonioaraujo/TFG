@@ -19,8 +19,8 @@ public class MenuInicioSesion extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField UsuarioF;
+	private JTextField ContraseñaF;
 
 	/**
 	 * Launch the application.
@@ -31,43 +31,46 @@ public class MenuInicioSesion extends JFrame {
 	 * Create the frame.
 	 */
 	public MenuInicioSesion() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MenuInicioSesion.class.getResource("/Imagenes/Logo.jpg")));
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(300, 125, 950, 600);
+		setSize(950, 600);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(394, 185, 96, 19);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		UsuarioF = new JTextField();
+		UsuarioF.setBounds(460, 170, 96, 19);
+		contentPane.add(UsuarioF);
+		UsuarioF.setColumns(10);
 		
 		JLabel LoginT = new JLabel("Inicio de Sesion");
-		LoginT.setFont(new Font("Arial", Font.PLAIN, 28));
+		LoginT.setFont(new Font("Tahoma", Font.PLAIN, 27));
 		LoginT.setHorizontalAlignment(SwingConstants.CENTER);
-		LoginT.setBounds(353, 58, 210, 66);
+		LoginT.setBounds(375, 87, 200, 35);
 		contentPane.add(LoginT);
 		
 		JLabel UsuarioT = new JLabel("Usuario");
 		UsuarioT.setHorizontalAlignment(SwingConstants.CENTER);
-		UsuarioT.setBounds(394, 133, 96, 31);
+		UsuarioT.setBounds(350, 170, 45, 13);
 		contentPane.add(UsuarioT);
 		
 		JLabel ContraseñaT = new JLabel("Contraseña");
 		ContraseñaT.setHorizontalAlignment(SwingConstants.CENTER);
-		ContraseñaT.setBounds(381, 236, 109, 19);
+		ContraseñaT.setBounds(350, 220, 69, 13);
 		contentPane.add(ContraseñaT);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(394, 265, 96, 19);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		ContraseñaF = new JTextField();
+		ContraseñaF.setBounds(460, 220, 96, 19);
+		contentPane.add(ContraseñaF);
+		ContraseñaF.setColumns(10);
 		
 		JLabel ResgitroT = new JLabel("¿No tienes cuenta? Registrate");
 		ResgitroT.setHorizontalAlignment(SwingConstants.CENTER);
-		ResgitroT.setBounds(221, 325, 135, 46);
+		ResgitroT.setBounds(292, 300, 182, 46);
 		contentPane.add(ResgitroT);
 		
 		JButton RegistroB = new JButton("Registrarte");
@@ -79,7 +82,7 @@ public class MenuInicioSesion extends JFrame {
 				
 			}
 		});
-		RegistroB.setBounds(240, 381, 85, 21);
+		RegistroB.setBounds(327, 370, 100, 27);
 		contentPane.add(RegistroB);
 		
 		JButton ContiuarB = new JButton("Continuar");
@@ -87,7 +90,7 @@ public class MenuInicioSesion extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		ContiuarB.setBounds(592, 381, 85, 21);
+		ContiuarB.setBounds(482, 370, 100, 27);
 		contentPane.add(ContiuarB);
 		
 		
