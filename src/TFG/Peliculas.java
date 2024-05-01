@@ -1,8 +1,12 @@
 package TFG;
+import java.awt.event.ActionEvent;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
 
 public class Peliculas extends JFrame {
 
@@ -41,6 +45,9 @@ public class Peliculas extends JFrame {
 		JLabel lblNewLabel_4 = new JLabel("New label");
 		lblNewLabel_4.setBounds(754, 14, 152, 64);
 		contentPane.add(lblNewLabel_4);
+		
+		
+		
         // Creamos un JPanel que representará el contenido principal
         JPanel mainContentPanel = new JPanel();
         mainContentPanel.setLayout(new GridLayout(3, 3, 0, 50));
@@ -49,27 +56,122 @@ public class Peliculas extends JFrame {
         JScrollPane scrollPane = new JScrollPane(mainContentPanel);
         scrollPane.setLocation(5, 4);
         scrollPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+
+
+         // Creamos un ActionListener para los botones de las películas
+        ActionListener actionListener = new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	JButton clickedButton = (JButton) e.getSource(); // Obtiene el botón que fue presionado
+
+                // Obtener la ruta de la imagen correspondiente al botón presionado
+                String imagePath = null;
+                if (clickedButton.getText().equals("Pelicula")) {
+                    imagePath = "C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\SpiderMan3.jpeg";
+                } 
+                else if (clickedButton.getText().equals("Pelicula1")) 
+                {
+                    imagePath = "C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\AtrapameSiPuedes.jpeg";
+                }
+                else if (clickedButton.getText().equals("Pelicula2")) 
+                {
+                    imagePath = "C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\BeauTieneMiedojpeg.jpeg";
+                }
+                else if (clickedButton.getText().equals("Pelicula3")) 
+                {
+                    imagePath = "C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\CadenaPerpetua.jpeg";
+                }
+                else if (clickedButton.getText().equals("Pelicula4")) 
+                {
+                    imagePath = "C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\ElCisneNegro.jpeg";
+                }
+                else if (clickedButton.getText().equals("Pelicula5")) 
+                {
+                    imagePath = "C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\LosOdiosos8.jpeg";
+                }
+                else if (clickedButton.getText().equals("Pelicula6")) 
+                {
+                    imagePath = "C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\Venom.jpeg";
+                }
+                else if (clickedButton.getText().equals("Pelicula7")) 
+                {
+                    imagePath = "C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\Origen.jpeg";
+                }
+                else if (clickedButton.getText().equals("Pelicula8")) 
+                {
+                    imagePath = "C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\Sharknado6.jpeg";
+                }
+                
+                //Creamos la ventana emergente
+                JFrame movieDetailsFrame = new JFrame("Detalles de la Película");
+                movieDetailsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                movieDetailsFrame.setSize(600, 350);
+                movieDetailsFrame.setLocationRelativeTo(null);
+
+                // Panel principal con BorderLayout
+                JPanel mainPanel = new JPanel(new BorderLayout());
+                movieDetailsFrame.setContentPane(mainPanel);
+
+                // Panel para la imagen (izquierda)
+                JPanel imagePanel = new JPanel();
+                mainPanel.add(imagePanel, BorderLayout.WEST);
+
+                // Añadir la imagen a la izquierda
+                JLabel movieImageLabel = new JLabel();
+                ImageIcon movieIcon = new ImageIcon(imagePath); 
+                movieImageLabel.setIcon(movieIcon);
+                imagePanel.add(movieImageLabel);
+
+                // Panel para los detalles (centro)
+                JPanel detailsPanel = new JPanel(new GridLayout(0, 1));
+                mainPanel.add(detailsPanel, BorderLayout.CENTER);
+
+                // Creamos un JLabel para mostrar el estado de la película
+                JLabel movieStatusLabel = new JLabel("Estado: Disponible");
+                detailsPanel.add(movieStatusLabel);
+
+                // Creamos un JLabel para mostrar la categoría de la película
+                JLabel movieCategoryLabel = new JLabel("Categoría: Acción"); 
+                detailsPanel.add(movieCategoryLabel);
+
+                // Panel para el botón de reserva
+                JPanel reservePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+                mainPanel.add(reservePanel, BorderLayout.SOUTH);
+
+                // Creamos un JButton para reservar la película
+                JButton reserveButton = new JButton("Reservar");
+                reserveButton.setEnabled(true); 
+                reservePanel.add(reserveButton);
+
+                movieDetailsFrame.setVisible(true);
+
+            }
+        };
+
         
-        JButton btnNewButton = new JButton("New button");
+        JButton btnNewButton = new JButton("Pelicula");
         ImageIcon icon = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\SpiderMan3.jpeg");
         Image image = icon.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(image);
         btnNewButton.setIcon(scaledIcon);
+        btnNewButton.addActionListener(actionListener);
         mainContentPanel.add(btnNewButton);
         
         
-        JButton btnNewButton_1 = new JButton("New button");
+        JButton btnNewButton_1 = new JButton("Pelicula1");
         ImageIcon icon1 = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\AtrapameSiPuedes.jpeg");
         Image image1 = icon1.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon1 = new ImageIcon(image1);
         btnNewButton_1.setIcon(scaledIcon1);
+        btnNewButton.addActionListener(actionListener);
         mainContentPanel.add(btnNewButton_1);
         
-        JButton btnNewButton_2 = new JButton("New button");
+        JButton btnNewButton_2 = new JButton("Pelicula2");
         ImageIcon icon2 = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\BeauTieneMiedojpeg.jpeg");
         Image image2 = icon2.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon2 = new ImageIcon(image2);
         btnNewButton_2.setIcon(scaledIcon2);
+        btnNewButton_2.addActionListener(actionListener);
         mainContentPanel.add(btnNewButton_2);
         
         JComboBox comboBox = new JComboBox();
@@ -81,46 +183,52 @@ public class Peliculas extends JFrame {
         contentPane.add(lblNewLabel_3);
         lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
         
-        JButton btnNewButton_3 = new JButton("New button");
+        JButton btnNewButton_3 = new JButton("Pelicula3");
         ImageIcon icon3 = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\CadenaPerpetua.jpeg");
         Image image3 = icon3.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon3 = new ImageIcon(image3);
         btnNewButton_3.setIcon(scaledIcon3);
+        btnNewButton_3.addActionListener(actionListener);
         mainContentPanel.add(btnNewButton_3);
         
-        JButton btnNewButton_4 = new JButton("New button");
+        JButton btnNewButton_4 = new JButton("Pelicula4");
         ImageIcon icon4 = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\ElCisneNegro.jpeg");
         Image image4 = icon4.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon4 = new ImageIcon(image4);
         btnNewButton_4.setIcon(scaledIcon4);
+        btnNewButton_4.addActionListener(actionListener);
         mainContentPanel.add(btnNewButton_4);
         
-        JButton btnNewButton_5 = new JButton("New button");
+        JButton btnNewButton_5 = new JButton("Pelicula5");
         ImageIcon icon5 = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\LosOdiosos8.jpeg");
         Image image5 = icon5.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon5 = new ImageIcon(image5);
         btnNewButton_5.setIcon(scaledIcon5);
+        btnNewButton_5.addActionListener(actionListener);
         mainContentPanel.add(btnNewButton_5);
         
-        JButton btnNewButton_6 = new JButton("New button");
+        JButton btnNewButton_6 = new JButton("Pelicula6");
         ImageIcon icon6 = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\Venom.jpeg");
         Image image6 = icon6.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon6 = new ImageIcon(image6);
         btnNewButton_6.setIcon(scaledIcon6);
+        btnNewButton_6.addActionListener(actionListener);
         mainContentPanel.add(btnNewButton_6);
         
-        JButton btnNewButton_7 = new JButton("New button");
+        JButton btnNewButton_7 = new JButton("Pelicula7");
         ImageIcon icon7 = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\Origen.jpeg");
         Image image7 = icon7.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon7 = new ImageIcon(image7);
         btnNewButton_7.setIcon(scaledIcon7);
+        btnNewButton_7.addActionListener(actionListener);
         mainContentPanel.add(btnNewButton_7);
         
-        JButton btnNewButton_8 = new JButton("New button");
+        JButton btnNewButton_8 = new JButton("Pelicula8");
         ImageIcon icon8 = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\Sharknado6.jpeg");
         Image image8 = icon8.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon8 = new ImageIcon(image8);
         btnNewButton_8.setIcon(scaledIcon8);
+        btnNewButton_8.addActionListener(actionListener);
         mainContentPanel.add(btnNewButton_8);
         
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
