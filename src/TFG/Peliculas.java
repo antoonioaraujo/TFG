@@ -82,21 +82,45 @@ public class Peliculas extends JFrame {
         lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
         
         JButton btnNewButton_3 = new JButton("New button");
+        ImageIcon icon3 = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\CadenaPerpetua.jpeg");
+        Image image3 = icon3.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon3 = new ImageIcon(image3);
+        btnNewButton_3.setIcon(scaledIcon3);
         mainContentPanel.add(btnNewButton_3);
         
         JButton btnNewButton_4 = new JButton("New button");
+        ImageIcon icon4 = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\ElCisneNegro.jpeg");
+        Image image4 = icon4.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon4 = new ImageIcon(image4);
+        btnNewButton_4.setIcon(scaledIcon4);
         mainContentPanel.add(btnNewButton_4);
         
         JButton btnNewButton_5 = new JButton("New button");
+        ImageIcon icon5 = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\LosOdiosos8.jpeg");
+        Image image5 = icon5.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon5 = new ImageIcon(image5);
+        btnNewButton_5.setIcon(scaledIcon5);
         mainContentPanel.add(btnNewButton_5);
         
         JButton btnNewButton_6 = new JButton("New button");
+        ImageIcon icon6 = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\Venom.jpeg");
+        Image image6 = icon6.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon6 = new ImageIcon(image6);
+        btnNewButton_6.setIcon(scaledIcon6);
         mainContentPanel.add(btnNewButton_6);
         
         JButton btnNewButton_7 = new JButton("New button");
+        ImageIcon icon7 = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\Origen.jpeg");
+        Image image7 = icon7.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon7 = new ImageIcon(image7);
+        btnNewButton_7.setIcon(scaledIcon7);
         mainContentPanel.add(btnNewButton_7);
         
         JButton btnNewButton_8 = new JButton("New button");
+        ImageIcon icon8 = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\Sharknado6.jpeg");
+        Image image8 = icon8.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon8 = new ImageIcon(image8);
+        btnNewButton_8.setIcon(scaledIcon8);
         mainContentPanel.add(btnNewButton_8);
         
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
