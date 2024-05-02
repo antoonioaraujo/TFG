@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.ImageIcon;
@@ -88,6 +89,23 @@ public class MenuRegistro extends JFrame {
 		ConfirmarB.setIcon(null);
 		ConfirmarB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				ConexionMySQL conexion = new ConexionMySQL("freedb_Persian", "H!!$t822$tVdcEt", "freedb_Persian");
+			try {
+				conexion.conectar();
+				System.out.println("Conectado");
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			finally {
+				try {
+					conexion.desconectar();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
 			}
 		});
 		ConfirmarB.setBounds(482, 370, 100, 27);
