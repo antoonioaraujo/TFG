@@ -51,7 +51,7 @@ public class MenuInicioSesion extends JFrame {
 		LoginT.setBounds(375, 87, 200, 35);
 		contentPane.add(LoginT);
 
-		JLabel UsuarioT = new JLabel("NUsuario");
+		JLabel UsuarioT = new JLabel("Usuario");
 		UsuarioT.setHorizontalAlignment(SwingConstants.CENTER);
 		UsuarioT.setBounds(350, 170, 45, 13);
 		contentPane.add(UsuarioT);
@@ -61,7 +61,7 @@ public class MenuInicioSesion extends JFrame {
 		ContraseñaT.setBounds(350, 220, 69, 13);
 		contentPane.add(ContraseñaT);
 
-		ContraseñaF = new JTextField();
+		ContraseñaF = new JPasswordField();
 		ContraseñaF.setBounds(460, 220, 96, 19);
 		contentPane.add(ContraseñaF);
 		ContraseñaF.setColumns(10);
@@ -87,65 +87,48 @@ public class MenuInicioSesion extends JFrame {
 		ContinuarB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				ConexionMySQL conexion = new ConexionMySQL("freedb_Persian", "H!!$t822$tVdcEt", "freedb_Persian");
+				
 				try {
 					// Conexion
+					ConexionMySQL conexion = new ConexionMySQL("freedb_Persian", "H!!$t822$tVdcEt", "freedb_Persian");
 					conexion.conectar();
 					System.out.println("Conectado");
+					
+					String consulta = "SELECT * FROM registro WHERE Usuario='" + UsuarioF.getText()
+							+ "' AND contrasena='" + ContraseñaF.getText() + "'";
+				
+					ResultSet resultSet=conexion.ejecutarSelect(consulta);
+					System.out.println("Despues de igualar ResultSet");
+					if (resultSet.next()) {
+System.out.println("Usuario atenticado");
+                        // Usuario autenticado correctamente
+						
+							Usuario.setIdRegistro(resultSet.getInt("idregistro"));
+							Usuario.setNombre(resultSet.getString("usuario"));
+							Usuario.setContraseña(resultSet.getString("contrasena"));
+							Usuario.setCorreo(resultSet.getString("correo"));
+							
+							// Vaciar campos
+							UsuarioF.setText("");
+							ContraseñaF.setText("");
+
+							// Abrir la ventana principal
+							Peliculas Peliculas = new Peliculas();
+							Peliculas.setVisible(true);
+							dispose();                       
+							} else {
+							// Usuario no encontrado en la base de datos
+							
+							JOptionPane.showMessageDialog(null, "Nombre de usuario o contraseña incorrectos.");
+							}
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos");
 					e1.printStackTrace();
 				}
 
-				// Iniciar sesion en el NUsuario verificando que el NUsuario y la contraseña sean
-				// correctos
-				String NUsuario = UsuarioF.getText();
-				String Contraseña = ContraseñaF.getText();
-				
-				Usuario.setNombre(NUsuario);
-				Usuario.setContraseña(Contraseña);
-				
-				if (NUsuario.isEmpty() || Contraseña.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Error, rellena todos los campos", "Error", JOptionPane.ERROR_MESSAGE);	
-				}else {
-					try {
-						String consulta = "SELECT * FROM registro WHERE NUsuario='" + NUsuario
-								+ "' AND contrasena='" + Contraseña + "'";
-						
-						ResultSet resultSet=conexion.ejecutarSelect(consulta);
-						if (resultSet.next()) {
 
-	                        // NUsuario autenticado correctamente
-	
-	NUsuario= resultSet.getString("NUsuario");
-	Contraseña= resultSet.getString("contrasena");
-	
-
-	// Vaciar campos
-	UsuarioF.setText("");
-	ContraseñaF.setText("");
-
-	// Abrir la ventana principal
-	Peliculas Peliculas = new Peliculas();
-	Peliculas.setVisible(true);
-	dispose();
-	                       
-	} else {
-	// NUsuario no encontrado en la base de datos
-
-	JOptionPane.showMessageDialog(null, "Nombre de NUsuario o contraseña incorrectos.");
-	}
-						
-						System.out.println("Sesion iniciada con exito");
-						
-	
-					} catch (Exception e2) {
-						// TODO: handle exception
-					}
-
-					
-				}
-			}
+			} //Cierre action event
 		});
 		ContinuarB.setBounds(482, 370, 100, 27);
 		contentPane.add(ContinuarB);
