@@ -108,7 +108,7 @@ public class MenuRegistro extends JFrame {
 		String contraseña = ContraseñaF.getText();
 			
 		if (nombre.isEmpty() || correo.isBlank() || contraseña.isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Este, rellena todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Error, rellena todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
 		}else {	
 			try {
 				String consulta ="INSERT INTO registro (usuario,contrasena,correo) VALUES ('"+nombre+"','"+contraseña+"','"+correo+"')"; 
