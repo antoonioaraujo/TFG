@@ -3,18 +3,16 @@ package TFG;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.JButton;
+
+
+
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
 import java.awt.*;
+import java.sql.ResultSet;
 
 public class MenuInicioSesion extends JFrame {
 
@@ -53,7 +51,7 @@ public class MenuInicioSesion extends JFrame {
 		LoginT.setBounds(375, 87, 200, 35);
 		contentPane.add(LoginT);
 
-		JLabel UsuarioT = new JLabel("Usuario");
+		JLabel UsuarioT = new JLabel("NUsuario");
 		UsuarioT.setHorizontalAlignment(SwingConstants.CENTER);
 		UsuarioT.setBounds(350, 170, 45, 13);
 		contentPane.add(UsuarioT);
@@ -99,33 +97,54 @@ public class MenuInicioSesion extends JFrame {
 					e1.printStackTrace();
 				}
 
-				// Iniciar sesion en el usuario verificando que el usuario y la contraseña sean
+				// Iniciar sesion en el NUsuario verificando que el NUsuario y la contraseña sean
 				// correctos
-				try {
-					String consulta = "SELECT * FROM registro WHERE usuario='" + UsuarioF.getText()
-							+ "' AND contrasena='" + ContraseñaF.getText() + "'";
-					conexion.ejecutarSelect(consulta);
-					System.out.println("Sesion iniciada con exito");
+				String NUsuario = UsuarioF.getText();
+				String Contraseña = ContraseñaF.getText();
+				
+				Usuario.setNombre(NUsuario);
+				Usuario.setContraseña(Contraseña);
+				
+				if (NUsuario.isEmpty() || Contraseña.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Error, rellena todos los campos", "Error", JOptionPane.ERROR_MESSAGE);	
+				}else {
+					try {
+						String consulta = "SELECT * FROM registro WHERE NUsuario='" + NUsuario
+								+ "' AND contrasena='" + Contraseña + "'";
+						
+						ResultSet resultSet=conexion.ejecutarSelect(consulta);
+						if (resultSet.next()) {
 
-				} catch (Exception e2) {
-					// TODO: handle exception
-				}
-				// Desconexion
-				try {
-					conexion.desconectar();
-					System.out.println("Desconectado");
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				// Vaciar campos
-				UsuarioF.setText("");
-				ContraseñaF.setText("");
+	                        // NUsuario autenticado correctamente
+	
+	NUsuario= resultSet.getString("NUsuario");
+	Contraseña= resultSet.getString("contrasena");
+	
 
-				// Abrir la ventana principal
-				Peliculas Peliculas = new Peliculas();
-				Peliculas.setVisible(true);
-				dispose();
+	// Vaciar campos
+	UsuarioF.setText("");
+	ContraseñaF.setText("");
+
+	// Abrir la ventana principal
+	Peliculas Peliculas = new Peliculas();
+	Peliculas.setVisible(true);
+	dispose();
+	                       
+	} else {
+	// NUsuario no encontrado en la base de datos
+
+	JOptionPane.showMessageDialog(null, "Nombre de NUsuario o contraseña incorrectos.");
+	}
+						
+						System.out.println("Sesion iniciada con exito");
+						
+	
+					} catch (Exception e2) {
+						// TODO: handle exception
+					}
+
+					
+				}
 			}
 		});
 		ContinuarB.setBounds(482, 370, 100, 27);
