@@ -34,6 +34,7 @@ public class Peliculas extends JFrame {
 	 * Create the frame.
 	 */
     public Peliculas() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Peliculas.class.getResource("/Imagenes/Logo.jpg")));
 		setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(950, 600);
@@ -43,9 +44,9 @@ public class Peliculas extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 		
-		JLabel lblNewLabel_4 = new JLabel("New label");
-		lblNewLabel_4.setBounds(754, 14, 152, 64);
-		contentPane.add(lblNewLabel_4);
+		JLabel IconoL = new JLabel("New label");
+		IconoL.setBounds(754, 14, 152, 64);
+		contentPane.add(IconoL);
 		
 		
 		
@@ -241,14 +242,19 @@ public class Peliculas extends JFrame {
         btnNewButton_2.addActionListener(actionListener);
         mainContentPanel.add(btnNewButton_2);
         
-        JComboBox comboBox = new JComboBox();
-        comboBox.setBounds(25, 36, 133, 20);
-        contentPane.add(comboBox);
+        JLabel GeneroL = new JLabel("Genero");
+        GeneroL.setBounds(20, 10, 57, 20);
+        contentPane.add(GeneroL);
+        GeneroL.setHorizontalAlignment(SwingConstants.CENTER);
         
-        JLabel lblNewLabel_3 = new JLabel("Filtros");
-        lblNewLabel_3.setBounds(60, 11, 57, 20);
-        contentPane.add(lblNewLabel_3);
-        lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+        JLabel FechaL = new JLabel("Fecha de publicacion");
+        FechaL.setBounds(190, 10, 150, 20);
+        contentPane.add(FechaL);
+        FechaL.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        
+      
+        
         
         JButton btnNewButton_3 = new JButton("4");
         ImageIcon icon3 = new ImageIcon("src/Imagenes/CadenaPerpetua.jpeg");
@@ -298,6 +304,50 @@ public class Peliculas extends JFrame {
         btnNewButton_8.addActionListener(actionListener);
         mainContentPanel.add(btnNewButton_8);
         
+        JRadioButton AccionRB = new JRadioButton("Accion");
+        AccionRB.setBounds(25, 30, 80, 20);
+        contentPane.add(AccionRB);
+        AccionRB.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        JRadioButton DramaRB = new JRadioButton("Drama");
+        DramaRB.setBounds(24, 50, 80, 20);
+        contentPane.add(DramaRB);
+        DramaRB.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        JRadioButton ComediaRB = new JRadioButton("Comedia");
+        ComediaRB.setBounds(29, 70, 80, 20);
+        contentPane.add(ComediaRB);
+        ComediaRB.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        ButtonGroup Genero = new ButtonGroup();
+        Genero.add(ComediaRB);
+        Genero.add(AccionRB);
+        Genero.add(DramaRB);
+        
+        JRadioButton FechaAlta = new JRadioButton("Por encima del 2010");
+        FechaAlta.setBounds(199, 30, 150, 20);
+        contentPane.add(FechaAlta);
+        FechaAlta.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        JRadioButton FechaBaja = new JRadioButton("Por debajo del 2010");
+        FechaBaja.setBounds(200, 50, 150, 20);
+        contentPane.add(FechaBaja);
+        FechaBaja.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        ButtonGroup Fecha = new ButtonGroup();
+        Fecha.add(FechaBaja);
+        Fecha.add(FechaAlta);
+        JButton QuitarFiltrosB = new JButton("QuitarFiltros");
+        QuitarFiltrosB.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Genero.clearSelection();
+        		Fecha.clearSelection();
+        	}
+        });
+        QuitarFiltrosB.setBounds(600,30, 110, 25);
+        contentPane.add(QuitarFiltrosB);
+        QuitarFiltrosB.setHorizontalAlignment(SwingConstants.CENTER);
+        
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
         // Agregamos el JScrollPane al contentPane sin reemplazar componentes existentes
@@ -306,5 +356,8 @@ public class Peliculas extends JFrame {
         getContentPane().revalidate();
         mainContentPanel.setPreferredSize(new Dimension(850, 1400));
         contentPane.add(scrollPane);
+        
+
+		
 	}
 }
