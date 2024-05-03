@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -66,38 +67,38 @@ public class Peliculas extends JFrame {
 
                 // Obtener la ruta de la imagen correspondiente al botón presionado
                 String imagePath = null;
-                if (clickedButton.getText().equals("Pelicula")) {
+                if (clickedButton.getText().equals("1")) {
                     imagePath = "src/Imagenes/SpiderMan3.jpeg";
                 } 
-                else if (clickedButton.getText().equals("Pelicula1")) 
+                else if (clickedButton.getText().equals("2")) 
                 {
                     imagePath = "src/Imagenes/AtrapameSiPuedes.jpeg";
                 }
-                else if (clickedButton.getText().equals("Pelicula2")) 
+                else if (clickedButton.getText().equals("3")) 
                 {
                     imagePath = "src/Imagenes/BeauTieneMiedojpeg.jpeg";
                 }
-                else if (clickedButton.getText().equals("Pelicula3")) 
+                else if (clickedButton.getText().equals("4")) 
                 {
                     imagePath = "src/Imagenes/CadenaPerpetua.jpeg";
                 }
-                else if (clickedButton.getText().equals("Pelicula4")) 
+                else if (clickedButton.getText().equals("5")) 
                 {
                     imagePath = "src/Imagenes/ElCisneNegro.jpeg";
                 }
-                else if (clickedButton.getText().equals("Pelicula5")) 
+                else if (clickedButton.getText().equals("6")) 
                 {
                     imagePath = "src/Imagenes/LosOdiosos8.jpeg";
                 }
-                else if (clickedButton.getText().equals("Pelicula6")) 
+                else if (clickedButton.getText().equals("7")) 
                 {
                     imagePath = "src/Imagenes/Venom.jpeg";
                 }
-                else if (clickedButton.getText().equals("Pelicula7")) 
+                else if (clickedButton.getText().equals("8")) 
                 {
                     imagePath = "src/Imagenes/Origen.jpeg";
                 }
-                else if (clickedButton.getText().equals("Pelicula8")) 
+                else if (clickedButton.getText().equals("9")) 
                 {
                     imagePath = "src/Imagenes/Sharknado6.jpeg";
                 }
@@ -142,14 +143,80 @@ public class Peliculas extends JFrame {
                 JButton reserveButton = new JButton("Reservar");
                 reserveButton.setEnabled(true); 
                 reservePanel.add(reserveButton);
-
                 movieDetailsFrame.setVisible(true);
+
+                reserveButton.addActionListener(new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+        // funcion para obtener el nombre de la pelicula que estamos reservando
+
+        String nombrePelicula = clickedButton.getText();
+
+		// Construyes la consulta SQL de actualización
+        String consulta = "UPDATE peliculas SET estado='reservado' WHERE idpeliculas='" + nombrePelicula + "'"; //AND usuario='" + nombreUsuario + "'";
+
+        // Creas una instancia de ConexionMySQL para ejecutar la consulta
+        ConexionMySQL conexion = new ConexionMySQL("freedb_Persian", "H!!$t822$tVdcEt", "freedb_Persian");
+        try {
+            // Estableces la conexión a la base de datos
+            conexion.conectar();
+
+            // Ejecutas la consulta de actualización
+            conexion.ejecutarUpdate(consulta);
+
+            // Muestras un mensaje indicando que la película ha sido reservada
+            System.out.println("Película reservada con éxito");
+
+            // Desconectas de la base de datos
+            conexion.desconectar();
+        } catch (SQLException ex) {
+            // Manejas cualquier excepción que pueda ocurrir durante la conexión o la consulta
+            ex.printStackTrace();
+        }
+        
+        // Deshabilitas el botón de reserva después de que la película haya sido reservada
+        reserveButton.setEnabled(false);
+    }
+});
+             // Creas un JButton para la devolución de la película
+                JButton devolucionButton = new JButton("Devolver");
+                devolucionButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        // función para obtener el nombre de la película que estamos devolviendo
+                        String nombrePelicula = clickedButton.getText(); // Si ya tienes una forma de obtener el nombre de la película, úsala aquí
+
+                        // Construyes la consulta SQL de actualización
+                        String consulta = "UPDATE peliculas SET estado='disponible' WHERE idpeliculas='" + nombrePelicula + "'"; // Ajusta la consulta según la estructura de tu base de datos
+
+                        // Creas una instancia de ConexionMySQL para ejecutar la consulta
+                        ConexionMySQL conexion = new ConexionMySQL("freedb_Persian", "H!!$t822$tVdcEt", "freedb_Persian");
+                        try {
+                            // Estableces la conexión a la base de datos
+                            conexion.conectar();
+
+                            // Ejecutas la consulta de actualización
+                            conexion.ejecutarUpdate(consulta);
+
+                            // Muestras un mensaje indicando que la película ha sido devuelta
+                            System.out.println("Película devuelta con éxito");
+
+                            // Desconectas de la base de datos
+                            conexion.desconectar();
+                        } catch (SQLException ex) {
+                            // Manejas cualquier excepción que pueda ocurrir durante la conexión o la consulta
+                            ex.printStackTrace();
+                        }
+                        
+                        // Deshabilitas el botón de devolución después de que la película haya sido devuelta
+                        devolucionButton.setEnabled(false);
+                    }
+                });
+                reservePanel.add(devolucionButton);
 
             }
         };
 
         
-        JButton btnNewButton = new JButton("Pelicula");
+        JButton btnNewButton = new JButton("1");
         ImageIcon icon = new ImageIcon("src/Imagenes/SpiderMan3.jpeg");
         Image image = icon.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(image);
@@ -158,7 +225,7 @@ public class Peliculas extends JFrame {
         mainContentPanel.add(btnNewButton);
         
         
-        JButton btnNewButton_1 = new JButton("Pelicula1");
+        JButton btnNewButton_1 = new JButton("2");
         ImageIcon icon1 = new ImageIcon("src/Imagenes/AtrapameSiPuedes.jpeg");
         Image image1 = icon1.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon1 = new ImageIcon(image1);
@@ -166,7 +233,7 @@ public class Peliculas extends JFrame {
         btnNewButton_1.addActionListener(actionListener);
         mainContentPanel.add(btnNewButton_1);
         
-        JButton btnNewButton_2 = new JButton("Pelicula2");
+        JButton btnNewButton_2 = new JButton("3");
         ImageIcon icon2 = new ImageIcon("src/Imagenes/BeauTieneMiedojpeg.jpeg");
         Image image2 = icon2.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon2 = new ImageIcon(image2);
@@ -183,7 +250,7 @@ public class Peliculas extends JFrame {
         contentPane.add(lblNewLabel_3);
         lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
         
-        JButton btnNewButton_3 = new JButton("Pelicula3");
+        JButton btnNewButton_3 = new JButton("4");
         ImageIcon icon3 = new ImageIcon("src/Imagenes/CadenaPerpetua.jpeg");
         Image image3 = icon3.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon3 = new ImageIcon(image3);
@@ -191,7 +258,7 @@ public class Peliculas extends JFrame {
         btnNewButton_3.addActionListener(actionListener);
         mainContentPanel.add(btnNewButton_3);
         
-        JButton btnNewButton_4 = new JButton("Pelicula4");
+        JButton btnNewButton_4 = new JButton("5");
         ImageIcon icon4 = new ImageIcon("src/Imagenes/ElCisneNegro.jpeg");
         Image image4 = icon4.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon4 = new ImageIcon(image4);
@@ -199,7 +266,7 @@ public class Peliculas extends JFrame {
         btnNewButton_4.addActionListener(actionListener);
         mainContentPanel.add(btnNewButton_4);
         
-        JButton btnNewButton_5 = new JButton("Pelicula5");
+        JButton btnNewButton_5 = new JButton("6");
         ImageIcon icon5 = new ImageIcon("src/Imagenes/LosOdiosos8.jpeg");
         Image image5 = icon5.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon5 = new ImageIcon(image5);
@@ -207,7 +274,7 @@ public class Peliculas extends JFrame {
         btnNewButton_5.addActionListener(actionListener);
         mainContentPanel.add(btnNewButton_5);
         
-        JButton btnNewButton_6 = new JButton("Pelicula6");
+        JButton btnNewButton_6 = new JButton("7");
         ImageIcon icon6 = new ImageIcon("src/Imagenes/Venom.jpeg");
         Image image6 = icon6.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon6 = new ImageIcon(image6);
@@ -215,7 +282,7 @@ public class Peliculas extends JFrame {
         btnNewButton_6.addActionListener(actionListener);
         mainContentPanel.add(btnNewButton_6);
         
-        JButton btnNewButton_7 = new JButton("Pelicula7");
+        JButton btnNewButton_7 = new JButton("8");
         ImageIcon icon7 = new ImageIcon("src/Imagenes/Origen.jpeg");
         Image image7 = icon7.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon7 = new ImageIcon(image7);
@@ -223,7 +290,7 @@ public class Peliculas extends JFrame {
         btnNewButton_7.addActionListener(actionListener);
         mainContentPanel.add(btnNewButton_7);
         
-        JButton btnNewButton_8 = new JButton("Pelicula8");
+        JButton btnNewButton_8 = new JButton("9");
         ImageIcon icon8 = new ImageIcon("src/Imagenes/Sharknado6.jpeg");
         Image image8 = icon8.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon8 = new ImageIcon(image8);

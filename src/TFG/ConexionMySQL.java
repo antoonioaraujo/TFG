@@ -110,4 +110,13 @@ public class ConexionMySQL {
 
         return fila;
     }
+
+    public int ejecutarUpdate(String consulta) throws SQLException {
+
+        Statement statement = connection.createStatement();
+        int filasAfectadas = statement.executeUpdate(consulta);
+        return filasAfectadas;
+    }
 }
+
+    
