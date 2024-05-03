@@ -4,11 +4,15 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.ImageIcon;
@@ -79,7 +83,7 @@ public class MenuRegistro extends JFrame {
 		ContraseñaT.setBounds(350, 270, 69, 13);
 		contentPane.add(ContraseñaT);
 		
-		ContraseñaF = new JTextField();
+		ContraseñaF = new JPasswordField();
 		ContraseñaF.setBounds(460, 270, 96, 19);
 		contentPane.add(ContraseñaF);
 		ContraseñaF.setColumns(10);
@@ -88,6 +92,46 @@ public class MenuRegistro extends JFrame {
 		ConfirmarB.setIcon(null);
 		ConfirmarB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ConexionMySQL conexion = new ConexionMySQL("freedb_Persian", "H!!$t822$tVdcEt", "freedb_Persian");
+		try {
+			//COnexion
+			conexion.conectar();
+			System.out.println("Conectado");
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	
+		//RegistrarUsuario();
+		String nombre = UsuarioF.getText();
+		String correo = CorreoF.getText();
+		String contraseña = ContraseñaF.getText();
+			
+		if (nombre.isEmpty() || correo.isBlank() || contraseña.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "Este, rellena todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+		}else {	
+			try {
+				String consulta ="INSERT INTO registro (usuario,contrasena,correo) VALUES ('"+nombre+"','"+contraseña+"','"+correo+"')"; 
+				conexion.ejecutarInsertDeleteUpdate(consulta);
+				System.out.println("Usuario registrado con exito");
+	            
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+				//Desconexion
+				try {
+					conexion.desconectar();
+					System.out.println("Desconectado");
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//Vaciar campos
+				UsuarioF.setText("");
+				CorreoF.setText("");
+				ContraseñaF.setText("");
+				
 			}
 		});
 		ConfirmarB.setBounds(482, 370, 100, 27);
