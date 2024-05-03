@@ -67,39 +67,39 @@ public class Peliculas extends JFrame {
                 // Obtener la ruta de la imagen correspondiente al botón presionado
                 String imagePath = null;
                 if (clickedButton.getText().equals("Pelicula")) {
-                    imagePath = "C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\SpiderMan3.jpeg";
+                    imagePath = "src/Imagenes/SpiderMan3.jpeg";
                 } 
                 else if (clickedButton.getText().equals("Pelicula1")) 
                 {
-                    imagePath = "C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\AtrapameSiPuedes.jpeg";
+                    imagePath = "src/Imagenes/AtrapameSiPuedes.jpeg";
                 }
                 else if (clickedButton.getText().equals("Pelicula2")) 
                 {
-                    imagePath = "C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\BeauTieneMiedojpeg.jpeg";
+                    imagePath = "src/Imagenes/BeauTieneMiedojpeg.jpeg";
                 }
                 else if (clickedButton.getText().equals("Pelicula3")) 
                 {
-                    imagePath = "C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\CadenaPerpetua.jpeg";
+                    imagePath = "src/Imagenes/CadenaPerpetua.jpeg";
                 }
                 else if (clickedButton.getText().equals("Pelicula4")) 
                 {
-                    imagePath = "C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\ElCisneNegro.jpeg";
+                    imagePath = "src/Imagenes/ElCisneNegro.jpeg";
                 }
                 else if (clickedButton.getText().equals("Pelicula5")) 
                 {
-                    imagePath = "C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\LosOdiosos8.jpeg";
+                    imagePath = "src/Imagenes/LosOdiosos8.jpeg";
                 }
                 else if (clickedButton.getText().equals("Pelicula6")) 
                 {
-                    imagePath = "C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\Venom.jpeg";
+                    imagePath = "src/Imagenes/Venom.jpeg";
                 }
                 else if (clickedButton.getText().equals("Pelicula7")) 
                 {
-                    imagePath = "C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\Origen.jpeg";
+                    imagePath = "src/Imagenes/Origen.jpeg";
                 }
                 else if (clickedButton.getText().equals("Pelicula8")) 
                 {
-                    imagePath = "C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\Sharknado6.jpeg";
+                    imagePath = "src/Imagenes/Sharknado6.jpeg";
                 }
                 
                 //Creamos la ventana emergente
@@ -150,7 +150,7 @@ public class Peliculas extends JFrame {
 
         
         JButton btnNewButton = new JButton("Pelicula");
-        ImageIcon icon = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\SpiderMan3.jpeg");
+        ImageIcon icon = new ImageIcon("src/Imagenes/SpiderMan3.jpeg");
         Image image = icon.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(image);
         btnNewButton.setIcon(scaledIcon);
@@ -159,15 +159,15 @@ public class Peliculas extends JFrame {
         
         
         JButton btnNewButton_1 = new JButton("Pelicula1");
-        ImageIcon icon1 = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\AtrapameSiPuedes.jpeg");
+        ImageIcon icon1 = new ImageIcon("src/Imagenes/AtrapameSiPuedes.jpeg");
         Image image1 = icon1.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon1 = new ImageIcon(image1);
         btnNewButton_1.setIcon(scaledIcon1);
-        btnNewButton.addActionListener(actionListener);
+        btnNewButton_1.addActionListener(actionListener);
         mainContentPanel.add(btnNewButton_1);
         
         JButton btnNewButton_2 = new JButton("Pelicula2");
-        ImageIcon icon2 = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\BeauTieneMiedojpeg.jpeg");
+        ImageIcon icon2 = new ImageIcon("src/Imagenes/BeauTieneMiedojpeg.jpeg");
         Image image2 = icon2.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon2 = new ImageIcon(image2);
         btnNewButton_2.setIcon(scaledIcon2);
@@ -184,7 +184,7 @@ public class Peliculas extends JFrame {
         lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
         
         JButton btnNewButton_3 = new JButton("Pelicula3");
-        ImageIcon icon3 = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\CadenaPerpetua.jpeg");
+        ImageIcon icon3 = new ImageIcon("src/Imagenes/CadenaPerpetua.jpeg");
         Image image3 = icon3.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon3 = new ImageIcon(image3);
         btnNewButton_3.setIcon(scaledIcon3);
@@ -192,7 +192,7 @@ public class Peliculas extends JFrame {
         mainContentPanel.add(btnNewButton_3);
         
         JButton btnNewButton_4 = new JButton("Pelicula4");
-        ImageIcon icon4 = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\ElCisneNegro.jpeg");
+        ImageIcon icon4 = new ImageIcon("src/Imagenes/ElCisneNegro.jpeg");
         Image image4 = icon4.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon4 = new ImageIcon(image4);
         btnNewButton_4.setIcon(scaledIcon4);
@@ -200,7 +200,7 @@ public class Peliculas extends JFrame {
         mainContentPanel.add(btnNewButton_4);
         
         JButton btnNewButton_5 = new JButton("Pelicula5");
-        ImageIcon icon5 = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\LosOdiosos8.jpeg");
+        ImageIcon icon5 = new ImageIcon("src/Imagenes/LosOdiosos8.jpeg");
         Image image5 = icon5.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon5 = new ImageIcon(image5);
         btnNewButton_5.setIcon(scaledIcon5);
@@ -208,7 +208,7 @@ public class Peliculas extends JFrame {
         mainContentPanel.add(btnNewButton_5);
         
         JButton btnNewButton_6 = new JButton("Pelicula6");
-        ImageIcon icon6 = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\Venom.jpeg");
+        ImageIcon icon6 = new ImageIcon("src/Imagenes/Venom.jpeg");
         Image image6 = icon6.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon6 = new ImageIcon(image6);
         btnNewButton_6.setIcon(scaledIcon6);
@@ -216,7 +216,7 @@ public class Peliculas extends JFrame {
         mainContentPanel.add(btnNewButton_6);
         
         JButton btnNewButton_7 = new JButton("Pelicula7");
-        ImageIcon icon7 = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\Origen.jpeg");
+        ImageIcon icon7 = new ImageIcon("src/Imagenes/Origen.jpeg");
         Image image7 = icon7.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon7 = new ImageIcon(image7);
         btnNewButton_7.setIcon(scaledIcon7);
@@ -224,7 +224,7 @@ public class Peliculas extends JFrame {
         mainContentPanel.add(btnNewButton_7);
         
         JButton btnNewButton_8 = new JButton("Pelicula8");
-        ImageIcon icon8 = new ImageIcon("C:\\Users\\Usuario\\Documents\\GitHub\\TFG\\src\\Imagenes\\Sharknado6.jpeg");
+        ImageIcon icon8 = new ImageIcon("src/Imagenes/Sharknado6.jpeg");
         Image image8 = icon8.getImage().getScaledInstance(333, 433, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon8 = new ImageIcon(image8);
         btnNewButton_8.setIcon(scaledIcon8);
